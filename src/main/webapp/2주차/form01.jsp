@@ -4,7 +4,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-<title>seohyun's page</title>
+<title>seohyun's page</title>  
 </head>
 <body>
 	<h2>이름을 입력하세요!</h2>
