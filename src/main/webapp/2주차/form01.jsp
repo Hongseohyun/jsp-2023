@@ -16,5 +16,5 @@
 	수학 : <input type="text" name="math"><br>
 		<input type="submit" value="확인"> 
 	</form>
-</body> 
+</body>  
 </html>
