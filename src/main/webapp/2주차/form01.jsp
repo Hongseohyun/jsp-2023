@@ -14,7 +14,7 @@
 	국어 : <input type="text" name="kor"><br>
 	영어 : <input type="text" name="eng"><br>
 	수학 : <input type="text" name="math"><br>
-		<input type="submit" value="확인">
+		<input type="submit" value="확인"> 
 	</form>
 </body>
 </html>
