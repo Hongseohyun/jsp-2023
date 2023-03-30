@@ -3,58 +3,45 @@
 <!doctype html>
 <html>
 <head>
-    <meta charset="utf-8">
+	<meta charset="UTF-8">
+	<title>Registration Form</title>
+	<link rel="stylesheet" type="text/css" href="join_style.css">
 </head>
 <body>
+	<h1>Registration Form</h1>
+	<form action="member_ok.jsp" method="post">
+		<label for="name">Name:</label>
+		<input type="text" id="name" name="name" required>
 
-<form action="member_ok.jsp" method="post">
-    <table>
-        <tr>
-            <td>아이디</td>
-            <td><input name="id" type="text"></td>
-        </tr>
+		<label for="email">Email:</label>
+		<input type="email" id="email" name="email" required>
 
-        <tr>
-            <td>비밀번호</td>
-            <td><input name="pwd" type="password"></td>
-        </tr>
-        <tr>
-            <td>성별</td>
-            <td>
-                <input name="gender" type="radio" value="남" checked>남
-                <input name="gender" type="radio" value="여">여
-            </td>
-        </tr>
-        <tr>
-            <td>가입경로</td>
-            <td>
-                <select name="path">
-                    <option value="웹검색" selected>웹검색</option>
-                    <option value="지인소개">지인소개</option>
-                    <option value="기타">기타</option>
-                </select>
-            </td>
-        </tr>
-        <tr>
-            <td>주소지</td>
-            <td>
-                <select name="add"size="4">
-                    <option selected>서울</option>
-                    <option value="김해">김해</option>
-                    <option>김해</option>
-                    <option value="김해">김해</option>
-                </select>
-            </td>
-        </tr>
-        <tr>
-            <td>메모</td>
-            <td>
-                <textarea name="memo" rows="4" ></textarea>
-            </td>
-        </tr>
-    </table>
-    <input type="submit" value="가입">
-</form>
+		<label for="password">Password:</label>
+		<input type="password" id="password" name="password" required>
+
+		<label for="confirm_password">Confirm Password:</label>
+		<input type="password" id="confirm_password" name="confirm_password" required>
+
+		<label for="gender">Gender:</label>
+		<select id="gender" name="gender">
+			<option value="">Select Gender</option>
+			<option value="male">Male</option>
+			<option value="female">Female</option>
+			<option value="other">Other</option>
+		</select>
+
+		<label for="phone">휴대폰 번호</label>
+		<input type="tel" name="phone" pattern="[0-9]{3}-[0-9]{3,4}-[0-9]{4}" placeholder="010-1234-5678" required><br>
+		
+
+		<label for="newsletter" class="newsLable">Subscribe to Newsletter:</label>
+		<input type="checkbox" id="newsletter" name="newsletter" value="yes">
+
+
+		<input type="submit" value="Register">
+	</form>
+</body>
+</html>
 
 </body>
 </html>

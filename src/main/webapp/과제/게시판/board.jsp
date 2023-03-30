@@ -1,41 +1,27 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="java.io.PrintWriter" %>
 <!DOCTYPE html>
 <html>
 <head>
-<!-- <meta charset="UTF-8">
-<meta http-equiv="Content-Type" content="text/html"; charset="UTF-8">
-<meta name="viewport" content="width=device-width", initial-scale"="1">
-<link rel="stylesheet" href="css/bootstrap.css"> -->
-<title>JSP 게시판 웹 사이트</title>
+	<meta charset="UTF-8">
+	<title>게시판</title>
+	<link rel="stylesheet" type="text/css" href="board.css">
 </head>
 <body>
-	<div>
-		<div>
-			<form action="board_ok.jsp" method="post">
-				<table>
-					<thead>
-						<tr>
-							<th>
-								게시판 글 쓰기
-							</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td><input name="title" type="text" placeholder="글 제목"></td>
-							<td><input name="writer" type="text" placeholder="작성자"></td>
-						</tr>
-						<tr>
-							<td><textarea name="content" placeholder="글 내용"></textarea></td>
-						</tr>
-					</tbody>				
-				</table>
-				<input type="submit" value="완료">
-			</form>
-		</div>
-	</div>
+		<h1>게시판</h1>
+	<div class="container">
+		<form action="board_ok.jsp" method="post">
+			<label for="title">제목</label>
+			<input type="text" id="title" name="title" required>
 
+			<label for="writer">작성자</label>
+			<input type="text" id="writer" name="writer" required>
+
+			<label for="content">내용</label>
+			<textarea id="content" name="content" rows="5" required></textarea>
+
+			<input type="submit" value="작성">
+		</form>
+	</div>
 </body>
 </html>

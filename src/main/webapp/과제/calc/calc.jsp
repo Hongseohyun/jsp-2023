@@ -4,9 +4,11 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-<title>Insert title here</title>   
+<title>계산기</title>   
+<link rel="stylesheet" type="text/css" href="calc.css">
 </head>
 <body>
+<h1>간단 계산기</h1>
 	<form method="get" action="ans.jsp">
 		x: <input type="text" name="x"><br>
 		y: <input type="text" name="y"><br>
