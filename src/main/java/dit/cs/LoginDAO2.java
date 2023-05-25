@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
-public class LoginDAO {
+public class LoginDAO2 {
 
 	//DBCP로 데이터베이스에 접근하여 Connection얻어오는 메소드
 	// 1. 접근제어자 public or private?
@@ -29,24 +29,7 @@ public class LoginDAO {
 		return con;
 	}
 	
-	//Form에서 가져온 데이터를 데이터베이스의 멤버테이블에 저장
-	public void insertLogin(LoginDTO dto) {
-		
-		String sql = "insert into member values(?,?,?)";
-		
-		 
-		try(Connection con = getConnection();
-			PreparedStatement pstmt = con.prepareStatement(sql);) {
-			pstmt.setString(1, dto.getName());
-			pstmt.setString(2, dto.getId());
-			pstmt.setString(3, dto.getPwd());
-			
-			pstmt.executeUpdate();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
+
 	//데이터베이스에서 테이블에 있는 레코드를 가져오는 메소드
 	//1.접근제어자
 	//2.반환 데이터타입
@@ -98,38 +81,50 @@ public class LoginDAO {
 		return dto;
 		
 	}
-	public void update(LoginDTO dto){
-		String sql = "UPDATE member SET NAME=?, PWD=? WHERE ID=?";
-		
-		try (Connection con = getConnection(); 
-			 PreparedStatement pstmt = con.prepareStatement(sql);) {
-			pstmt.setString(1, dto.getName());
-			pstmt.setString(2, dto.getPwd());
-			pstmt.setString(3, dto.getId());
-			pstmt.executeUpdate();
-			
-			
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+	   public void memberFunction(LoginDTO dto, String keyword) {
+		      PreparedStatement pstmt = null;
+		      
+		      try(Connection con = getConnection()){   
+		         //I = 회원가입
+		         if(keyword.equals("I")) {
+		            String sql = "insert into member values(?,?,?)";
+		               pstmt = con.prepareStatement(sql);
+		               pstmt.setString(1, dto.getId());
+		               pstmt.setString(2, dto.getName());
+		               pstmt.setString(3, dto.getPwd());
+		         }
+		                  
+		         //U = 정보수정
+		         else if(keyword.equals("U")) {
+		            String sql = "Update member SET name = ?, pwd = ? WHERE id = ?";
+		               pstmt = con.prepareStatement(sql);
+		               pstmt.setString(1, dto.getName());
+		               pstmt.setString(2, dto.getPwd());
+		               pstmt.setString(3, dto.getId());
+		         }
+		         
+		         //D = 회원탈퇴
+		         else if(keyword.equals("D")) {
+		            String sql = "DELETE FROM member WHERE ID = ?";
+		            pstmt = con.prepareStatement(sql);
+		            pstmt.setString(1, dto.getId());
+		         }
+		         pstmt.executeUpdate();
+		         
+		         
+		      
+		      } catch (Exception e) {
+		         e.printStackTrace();
+		      } finally {
+		         try {
+		            if(pstmt!=null) pstmt.close();
+		         } catch (SQLException e) {
+		            e.printStackTrace();
+		         }
+		      }
+		   }
+
 		
 		
 	}
-	public void delete(LoginDTO dto){
-		String sql = "DELETE FROM member WHERE ID=?";
-		
-		try (Connection con = getConnection(); 
-			 PreparedStatement pstmt = con.prepareStatement(sql);) {
-			pstmt.setString(1, dto.getId());
-			pstmt.executeUpdate();
-			
-			
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		
-		
-	}
-}
+

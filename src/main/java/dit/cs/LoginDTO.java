@@ -11,8 +11,13 @@ package dit.cs;
 
 
 public class LoginDTO {
+	
+	//기본 생성자
+	
 	public LoginDTO() {}
-
+	
+	// 필드가 있는 생성자
+	// 필드가 있는 생성자를 사용하기 위해서는 기본생성자를 반드시 명시해야함
 	public LoginDTO(String id, String name, String pwd) {
 		super();
 		this.id = id;

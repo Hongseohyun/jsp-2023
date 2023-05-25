@@ -1,3 +1,4 @@
+<%@page import="dit.cs.LoginDAO2"%>
 <%@page import="dit.cs.LoginDTO"%>
 <%@page import="dit.cs.LoginDAO"%>
 <%@page import="java.util.ArrayList"%>
@@ -6,7 +7,7 @@
 
 <%
 //함수 호출
-LoginDAO dao =new LoginDAO();
+LoginDAO2 dao =new LoginDAO2();
 ArrayList<LoginDTO>dtos = dao.list();
 %>
 
