@@ -1,6 +1,6 @@
 <%@page import="dit.cs.boardDTO"%>
 <%@page import="dit.cs.boardDAO"%>
-<%@page import="javax.websocket.SendResult"%>
+<%@page import="javax.websocket.SendResult"%> 
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>

@@ -56,7 +56,7 @@ try (Connection con = ds.getConnection();
 			while (rs.next()) {
 				String id = rs.getString("id");
 				String name = rs.getString("name");
-				String pwd = rs.getString("pwd");
+				String pwd = rs.getString("password");
 			%>
 			<tr>
 				<td><a href="updateForm.jsp?id=<%=id%>"><%=id%></a></td>

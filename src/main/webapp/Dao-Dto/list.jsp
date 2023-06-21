@@ -1,14 +1,11 @@
 <%@page import="dit.cs.LoginDTO"%>
 <%@page import="dit.cs.LoginDAO"%>
 <%@page import="java.util.ArrayList"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@page import="java.sql.*"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-<%
-//함수 호출
-LoginDAO dao =new LoginDAO();
-ArrayList<LoginDTO>dtos = dao.list();
-%>
 
 <!DOCTYPE html>
 <html>
@@ -35,19 +32,17 @@ ArrayList<LoginDTO>dtos = dao.list();
 				<th>이름</th>
 				<th>비밀번호</th>
 			</tr>
-<%
-	for(LoginDTO dto : dtos){
-		
-%>
-			<tr>
-				<td><a href="updateForm.jsp?id=<%=dto.getId()%>"><%=dto.getId()%></a></td>
+			<c:forEach var="i" items="${ dtos }" varStatus="st">
+				<tr>
+					<td><a href="updateForm.jsp?id=${ i.getId() }">${ i.getId()}</a></td>
+					<td><c:out value="${ i.getName() }" /></td>
+					<td>${ i.getPwd() }</td>
+				</tr>
+			</c:forEach>
 
-				<td><%=dto.getName()%></td>
-				<td><%=dto.getPwd()%></td>
-			</tr>
-<%} %>
 		</table>
-		 <button  type="button" class="btn btn-info" onclick="location.href='insertForm.jsp'">회원가입</button>
+		<button type="button" class="btn btn-info"
+			onclick="location.href='insertForm.jsp'">회원가입</button>
 	</div>
 </body>
 </html>
